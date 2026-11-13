@@ -38,11 +38,14 @@ upstream-inherited code at a glance, do the following:
 - Tag the pull request with the `ni-only` label.
 - Add an `NI-Change: <short description>` trailer to the merge/squash
   commit message, alongside the existing `Signed-off-by` trailer.
-- Mark new NI-only files with a header comment, for example:
+- For files that support comments, mark new NI-only files with a header
+  comment using the file format's comment syntax, for example in TypeScript:
   `// NI-ONLY: not present upstream; see UPSTREAM.md#non-upstream-ni-only-changes`.
   For NI-only edits inside a file that is otherwise synced from upstream,
-  wrap the changed block in matching `// NI-ONLY: start` / `// NI-ONLY: end`
-  comments.
+  wrap the changed block in matching `NI-ONLY: start` / `NI-ONLY: end`
+  comments using that format's comment syntax.
+  For formats without comment support, such as `package.json`, use the
+  table below and commit trailers for traceability instead.
 - Record the change in the table below, including every upstream-shared
   file it touches, so a sync reviewer knows where to expect conflicts.
 - Give the change its own entry in [CHANGELOG.md](../CHANGELOG.md), under a
